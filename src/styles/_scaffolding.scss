@@ -1,0 +1,36 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: Rubik;
+  font-weight: 400;
+}
+html{
+ width: 100%;
+ max-width: 100%;
+ margin: 0;
+ padding: 0;
+ background-color: beige;
+ display: flex;
+ justify-content: center;
+ color: black;
+}
+h1 {
+  margin: 0 0 2rem;
+}
+.image {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background-image: url('~assets/example.png');
+  background-size: cover;
+}
+.indents{
+  margin: 45px 45px 0 45px;
+}
+.block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
