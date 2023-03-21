@@ -1,4 +1,4 @@
-import {schedule} from "@/js/components/toDoLIstComponents/dailySchedule"
+import {schedule} from "@/js/components/toDoLIstComponents/Record.clas"
 import {notes} from "@/js/components/toDoLIstComponents/notes"
 
 const todo = document.createElement("div")

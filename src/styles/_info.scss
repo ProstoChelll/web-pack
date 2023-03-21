@@ -2,38 +2,89 @@
     display: flex;
   }
   .info__left__daily{
-    padding: 10px;
-    width: 500px;
-    background-color: aquamarine;
+    background: #FFFFFF;
+    border: 1px solid #E6E6E6;
+    border-radius: 12px;
     height: auto;
-    border-radius: 20px;
-    h2{
-      margin-bottom: 30px;
+    width: 688px;
+    display: flex;
+    flex-direction: column;
+    & :last-child{
+      margin-bottom: 42px;
     }
+    .record {
+      border-bottom: 1px solid #000;
+      height: 54px;
+      display: flex;
+      margin-right: 46px;
+      margin-left: 42px;
+    h4 {
+      width: 52px;
+      padding-top: 25px;
+      border-right: 1px solid #000;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 30px;
+      text-align: right;
+      color: #515050;
+    }
+    p{
+      padding: 15px 0 0 10px;
+    }
+  }
+  .info__left__daily__addNewCase{
+    margin: 43px 0 0 44px;
+  }
   }
   .info__left__notes{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 500px;
-    height: 150px;
-    background-color: aquamarine;
+    width: 688px;
+    height: 223px;
+    background: #FFFFFF;
     margin-top: 45px;
     border-radius: 20px;
     padding: 10px;
+    &__inside{
+      padding: 36px 26px 108px 42px;
+      width: 620px;
+      height: 79px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 8px;
+      h3{
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+      .p{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+      }
+    }
   }
   .info__right{
     margin-left: 45px;
     &__smile{
       display: flex;
-      justify-content: space-between;
-      background-color: aquamarine;
-      width: 350px;
-      height: 100px;
+      justify-content: space-around;
+      background: #FFFFFF;
+      width: 416px;
+      height: 128px;
       border-radius: 20px;
       padding: 10px;
       .smile__img{
-        width: 50px;
+          width: 40px;
         :hover{
           width: 100px;
         }
@@ -43,52 +94,85 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: aquamarine;
-      width: 350px;
-      height: 100px;
+      background: #FFFFFF;
+      width: 544px;
+      height: 128px;
       border-radius: 20px;
       padding: 10px;
       margin-top: 45px;
-      img{
-        width: 30px;
+      p{
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+        color: #000000;
       }
     }
     &__impotant{
-      background-color: aquamarine;
-      width: 350px;
-      height: 200px;
+      background: #FFFFFF;
+      width: 544px;
+      height: 262px;
       border-radius: 20px;
       padding: 10px;
       margin-top: 45px;
+      p{
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 150%;
+        display: flex;
+        align-items: center;
+        letter-spacing: -0.019em;
+      }
       &__item{
         margin-top: 20px;
         display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        input{
+          margin-top: 8px;
+        }
+        p{
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 30px;
+          display: flex;
+          align-items: center;
+          color: #000000;
+        }
       }
     }
     &__Todoes{
-      width: 350px;
-      height: 500px;
-      background-color: aquamarine;
+      width: 544px;
+      height: 676px;
+      background: #FFFFFF;
       border-radius: 20px;
       padding: 10px;
       margin-top: 45px;
-    }
-  }
-  .record {
-    border-bottom: 1px solid #000;
-    display: flex;
-    justify-content: flex-start;
-    height: 42px;
-    align-items: center;
-    h4 {
-      padding: 0 10px;
-      border-right: 1px solid #000;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    p {
-      padding-left: 10px;
+      .most__impotant{
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 150%;
+        display: flex;
+        align-items: center;
+        letter-spacing: -0.019em;
+        color: #000000;
+        margin: 27px 0 10px 43px;
+      }
+      hr{
+        width: 458px;
+        margin: 0 43px 0 43px;
+      }
+      &__item{
+        display: flex;
+        height: 46px;
+        margin-left: 43px;
+        p{
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 30px;
+          display: flex;
+          align-items: center;
+          color: #000000;
+        }
+      }
     }
   }
