@@ -1,7 +1,5 @@
-import {createTimeList} from "@/js/components/toDoLIstComponents/allFunction/addScheduleFunction"
-import {createCaseInList} from "@/js/components/toDoLIstComponents/allFunction/addCaseFunction"
+import {createRecord} from "@/js/components/toDoLIstComponents/allFunction/createRecord"
 
-const scheduleData = []
 
 const addNewCase = document.createElement("div")
 addNewCase.classList.add("info__left__daily__addNewCase")
@@ -15,9 +13,10 @@ input.type = 'text'
 input.placeholder = 'Введите задание'
 input.classList.add("info__left__daily__addNewCase__input")
 
-const button = document.createElement("button")
-button.textContent = 'Cоздать запись!'
-button.classList.add("add__case")
+const buttonAddRecord = document.createElement("button")
+buttonAddRecord.textContent = 'Cоздать запись!'
+buttonAddRecord.classList.add("add__case")
+
 
 function getOptions(time) {
     const option = document.createElement('option')
@@ -25,60 +24,55 @@ function getOptions(time) {
     option.innerHTML = `<option>${time}.00</option>`
     select.append(option)
 }
-
-for (let i = 1; i <= 24; i ++){
-    getOptions(i)
-}
-
-button.addEventListener("click", () => {
-    const addCase = new createCaseInList(select.value,input.value)
-    let asf = addCase.addInList()
-    scheduleData.push(asf)
-    
-    let lastIndexOfArr = scheduleData[scheduleData.length - 1]
-    const record = document.createElement('div')
-    record.classList.add('record')
-    record.innerHTML = ` <h4>${lastIndexOfArr.time}:00</h4> <p>${lastIndexOfArr.title}</p>`
-
-    schedule.append(record)
-
-    input.value = ""
+const scheduleData = []
 
 
-    let allObjTime
-    let allObjTitle
-
-    for(let i = 0; i < scheduleData.length; i++){
-        allObjTime = scheduleData[i].time
-        allObjTitle = scheduleData[i].title
+buttonAddRecord.addEventListener("click", () => {
+    if (scheduleData.find(elem => elem.time === +select.value).title == '') {//если в шедоудата текуший элемент.time равен опшон то тогда appendSchedule
+        appendSchedule(+select.value, input.value)
+    } else {
+        const record = document.querySelector(`#record_${+select.value}`)
+        record.lastChild.textContent = input.value
+        localStorage.setItem(`record_${+select.value}`, String(input.value))
     }
 
-    let allObj = {time: Number(allObjTime),title: allObjTitle}
-    console.log(allObjTime,allObjTitle)
-    localStorage.setItem("scheduleData", allObj)
-    
+    input.value = ""
 })
 
-if(scheduleData[0]){
-    let allObj = localStorage.getItem("scheduleData")
-    scheduleData.push(allObj)
-    console.log(allObj)
-}
 
 addNewCase.append(select)
 addNewCase.append(input)
-addNewCase.append(button)
+addNewCase.append(buttonAddRecord)
 
 
 const schedule = document.createElement("div")
 schedule.classList.add("info__left__daily")
-
 schedule.append(addNewCase)
 
-scheduleData.forEach(elem => {
-    const record = new createTimeList(elem.time,elem.title)
-    schedule.append(record.divAndInnerHtml())
-})
 
+function appendSchedule(time, title) {
+    const record = new createRecord(time, title)
+    schedule.append(record.getLayaut())//создает новую запить(преобразует в штмл) и записывает в локал сторадж
+}
+
+function getLocalStorage(id) {
+    const item = localStorage.getItem(id)
+    if (item) return item
+    else return ''
+}
+
+
+for (let i = 6; i <= 22; i++) {
+    getOptions(i)
+    scheduleData.push({
+        time: i,
+        title: getLocalStorage(`record_${i}`)
+    })
+}
+scheduleData.map(elem => {
+    if (elem.title) {
+        appendSchedule(elem.time, elem.title)
+    }
+})
 
 export {schedule}
