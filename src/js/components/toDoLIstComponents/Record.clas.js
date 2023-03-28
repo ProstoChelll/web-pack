@@ -28,17 +28,35 @@ const scheduleData = []
 
 
 buttonAddRecord.addEventListener("click", () => {
-    if (scheduleData.find(elem => elem.time === +select.value).title == '') {//если в шедоудата текуший элемент.time равен опшон то тогда appendSchedule
+const elem = scheduleData.find(elem => elem.time === +select.value)
+if (input.value !== ""){
+    if (elem.title == ""){
         appendSchedule(+select.value, input.value)
     } else {
         const record = document.querySelector(`#record_${+select.value}`)
-        record.lastChild.textContent = input.value
-        localStorage.setItem(`record_${+select.value}`, String(input.value))
+        record.querySelector("p").textContent = input.value
+        scheduleData = scheduleData.map(elem =>{
+            if (elem.time == +select.value){
+                elem.title = input.value
+                input.value = ""
+            }
+            return elem
+        })
+        localStorage.setItem(`record_${select.value}`, String(input.value))
     }
+}
 
     input.value = ""
 })
 
+document.addEventListener("click", (e)=>{
+    const button = e.target
+    if (button.classList.contains("delete__record")){
+        const record = button.closest(".record")
+        record.remove()
+        localStorage.removeItem(`${record.id}`)
+    }
+})
 
 addNewCase.append(select)
 addNewCase.append(input)

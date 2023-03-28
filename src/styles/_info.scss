@@ -19,9 +19,8 @@
       margin-right: 46px;
       margin-left: 42px;
     .delete__record{
-      height: 40px;
-      width: 100px;
-      margin: 5px;
+      margin-left: auto;
+      height: 23px;
     }
     h4 {
       width: 52px;
@@ -90,9 +89,13 @@
       padding: 10px;
       .smile__img{
           width: 40px;
-        :hover{
-          width: 100px;
-        }
+          &__active {
+            border-radius: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #c93db4;
+            margin-top: 30px;
+          }
       }
     }
     &__water{
@@ -110,6 +113,11 @@
         font-size: 24px;
         line-height: 36px;
         color: #000000;
+      }
+      .aDrop__active{
+        background-color: #c93db4;
+        height: 35px;
+        border-radius: 140% 140% 50% 50%;
       }
     }
     &__impotant{
