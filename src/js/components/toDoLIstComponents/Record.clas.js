@@ -1,4 +1,4 @@
-import {createRecord} from "@/js/components/toDoLIstComponents/allFunction/createRecord"
+import {createRecord} from "@/js/components/toDoLIstComponents/toDoListFunction/createRecord"
 
 
 const addNewCase = document.createElement("div")
@@ -28,25 +28,26 @@ const scheduleData = []
 
 
 buttonAddRecord.addEventListener("click", () => {
-const elem = scheduleData.find(elem => elem.time === +select.value)
+const selectValue = +select.value
+const inputValue = input.value
+
+const elem = scheduleData.find(elem => elem.time === +selectValue)
 if (input.value !== ""){
     if (elem.title == ""){
-        appendSchedule(+select.value, input.value)
+        appendSchedule(+selectValue, inputValue)
     } else {
-        const record = document.querySelector(`#record_${+select.value}`)
-        record.querySelector("p").textContent = input.value
+        const record = document.querySelector(`#record_`+ selectValue)
+        record.querySelector("p").textContent = inputValue
         scheduleData = scheduleData.map(elem =>{
-            if (elem.time == +select.value){
-                elem.title = input.value
-                input.value = ""
+            if (elem.time == selectValue){
+                elem.title = inputValue
             }
             return elem
         })
-        localStorage.setItem(`record_${select.value}`, String(input.value))
+        localStorage.setItem(`record_${selectValue}`, String(inputValue))
     }
 }
-
-    input.value = ""
+    inputValue = ""
 })
 
 document.addEventListener("click", (e)=>{
@@ -71,6 +72,11 @@ schedule.append(addNewCase)
 function appendSchedule(time, title) {
     const record = new createRecord(time, title)
     schedule.append(record.getLayaut())//создает новую запить(преобразует в штмл) и записывает в локал сторадж
+    scheduleData.forEach(record => {
+        if(record.time == time){
+            record.title = title
+        }
+    })
 }
 
 function getLocalStorage(id) {

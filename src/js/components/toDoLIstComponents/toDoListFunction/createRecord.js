@@ -11,7 +11,7 @@ class createRecord{
         record.id = `record_${this.time}`
         record.innerHTML = ` <h4>${this.time}:00</h4>
                             <p>${this.title}</p>
-                            <button id = "delRecBtn_${this.time}" class = "delete__record">удалить запись</button>`
+                            <button id = "delRecBtn_${this.time}" class = "delete__record">Х</button>`
         localStorage.setItem(`record_${this.time}`, String(this.title))
 
         return record

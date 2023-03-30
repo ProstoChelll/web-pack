@@ -12,10 +12,15 @@ function getImage(src) {
 const smile = document.createElement("div")
 smile.classList.add("info__right__smile")
 
-moodIcons.map(elem => {
+moodIcons.map((elem, i) => {
    const img = getImage(elem)
+   img.id = `smileImg${i + 1}`
    smile.append(img)
 })
+
+const idActiveImage = localStorage.getItem("activeImage")
+const lastClickedImage = smile.querySelector("#" + idActiveImage)
+lastClickedImage.classList.add("smile__img__active")
 
 smile.addEventListener("click", (e) => {
    const target = e.target
@@ -26,7 +31,8 @@ smile.addEventListener("click", (e) => {
    })
 
    if (target.classList.contains("smile__img")) {
-       target.classList.add("smile__img__active")
+      target.classList.add("smile__img__active")
+      localStorage.setItem("activeImage", target.id)
    }
 
 })

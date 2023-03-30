@@ -21,6 +21,10 @@
     .delete__record{
       margin-left: auto;
       height: 23px;
+      width: 23px;
+      background-color: #c93db4;
+      color: #E6EAEF;
+      border: none;
     }
     h4 {
       width: 52px;
@@ -114,10 +118,10 @@
         line-height: 36px;
         color: #000000;
       }
-      .aDrop__active{
+      .water__img__active{
         background-color: #c93db4;
         height: 35px;
-        border-radius: 140% 140% 50% 50%;
+        border-radius: 150% 140% 50% 50%;
       }
     }
     &__impotant{
